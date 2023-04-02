@@ -16,6 +16,7 @@ var jacksonVersion = "2.14.2"
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:$junitVersion")
     implementation("com.opencsv:opencsv:$openCsvVersion")
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
 

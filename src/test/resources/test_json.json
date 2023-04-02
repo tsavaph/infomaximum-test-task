@@ -1,0 +1,44 @@
+[
+  {
+    "group": "group1",
+    "type": "type1",
+    "number": 1,
+    "weight": 2
+  },
+  {
+    "group": "group2",
+    "type": "type2",
+    "number": 11,
+    "weight": 22
+  },
+  {
+    "group": "group2",
+    "type": "type2",
+    "number": 111,
+    "weight": 222
+  },
+  {
+    "group": "group3",
+    "type": "type2",
+    "number": 1111,
+    "weight": 2222
+  },
+  {
+    "group": "group4",
+    "type": "type4",
+    "number": 11111,
+    "weight": 22222
+  },
+  {
+    "group": "group4",
+    "type": "type4",
+    "number": 111111,
+    "weight": 222222
+  },
+  {
+    "group": "group4",
+    "type": "type4",
+    "number": 1111111,
+    "weight": 2222222
+  }
+]

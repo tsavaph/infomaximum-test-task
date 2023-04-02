@@ -8,7 +8,12 @@ import java.util.stream.Collectors;
 
 public abstract class FileObjectStatistics {
     private static final String BORDER_LINE = "###################################################################";
-    protected List<FileObject> objects;
+
+    private List<FileObject> objects;
+
+    protected void setObjects(List<FileObject> objects) {
+        this.objects = objects;
+    }
 
 
     private void printGroupAndTypeDuplicates() {

@@ -12,6 +12,7 @@ public class FileObjectJsonStatistics extends FileObjectStatistics {
 
     public FileObjectJsonStatistics(BufferedReader fileReader) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        objects = Arrays.asList(mapper.readValue(fileReader, FileObject[].class));
+
+        setObjects(Arrays.asList(mapper.readValue(fileReader, FileObject[].class)));
     }
 }

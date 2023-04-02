@@ -1,0 +1,29 @@
+###################################################################
+SUMMARY STATISTICS
+###################################################################
+
+I. DUPLICATED OBJECTS
+
+Group - group4, type - type4. Amount - 3
+FileObject{group='group4', type='type4', number=11111, weight=22222}
+FileObject{group='group4', type='type4', number=111111, weight=222222}
+FileObject{group='group4', type='type4', number=1111111, weight=2222222}
+
+Group - group2, type - type2. Amount - 2
+FileObject{group='group2', type='type2', number=11, weight=22}
+FileObject{group='group2', type='type2', number=111, weight=222}
+
+II. THE TOTAL WEIGHT OF OBJECT IN EACH GROUP
+
+Group - group4, weight - 2466666
+Group - group3, weight - 2222
+Group - group2, weight - 244
+Group - group1, weight - 2
+
+III. MAXIMUM AND MINIMUM WEIGHT
+
+Maximum - 2222222
+Minimum - 2
+
+###################################################################
+

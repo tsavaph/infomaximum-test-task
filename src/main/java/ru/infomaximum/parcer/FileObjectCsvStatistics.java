@@ -16,7 +16,7 @@ public class FileObjectCsvStatistics extends FileObjectStatistics {
                 .withType(FileObject.class)
                 .build();
 
-        this.objects = csvToBean.parse();
+        setObjects(csvToBean.parse());
 
     }
 }
