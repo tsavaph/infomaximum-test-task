@@ -9,11 +9,13 @@ import java.io.*;
 
 public class Main {
     private final static String EXIT_COMMAND = "exit";
-    public static void main(String[] args) {
-        BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
-        while (true) {
-            try {
+    public static void main(String[] args) {
+
+        try {
+            BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
+
+            while (true) {
                 System.out.printf("Enter a path to JSON or CSV file. Type \"%s\" to exit.%n", EXIT_COMMAND);
                 String consoleLine = consoleReader.readLine();
 
@@ -35,14 +37,16 @@ public class Main {
 
                 fileReader.close();
 
-            } catch (FileNotFoundException e) {
-                System.out.println("File has not found. Please type a correct file path.");
-            } catch (IOException e) {
-                System.out.println("Unknown error. Please type again.");
-            } catch (IncorrectFileFormatException e) {
-                System.out.println("Incorrect file format.");
             }
 
+            consoleReader.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("File has not found. Please type a correct file path.");
+        } catch (IOException e) {
+            System.out.println("Unknown error. Please type again.");
+        } catch (IncorrectFileFormatException e) {
+            System.out.println("Incorrect file format.");
         }
 
     }

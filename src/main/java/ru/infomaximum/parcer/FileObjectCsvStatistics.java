@@ -1,5 +1,6 @@
 package ru.infomaximum.parcer;
 
+import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import ru.infomaximum.object.FileObject;
 
@@ -9,7 +10,13 @@ import java.io.IOException;
 public class FileObjectCsvStatistics extends FileObjectStatistics {
 
     public FileObjectCsvStatistics(BufferedReader fileReader) throws IOException {
-        this.objects = new CsvToBeanBuilder(fileReader).withType(FileObject.class).build().parse();
-//        objectsStream = new CsvToBeanBuilder(fileReader).withType(FileObject.class).build().parse().stream();
+
+
+        CsvToBean<FileObject> csvToBean = new CsvToBeanBuilder<FileObject>(fileReader)
+                .withType(FileObject.class)
+                .build();
+
+        this.objects = csvToBean.parse();
+
     }
 }
