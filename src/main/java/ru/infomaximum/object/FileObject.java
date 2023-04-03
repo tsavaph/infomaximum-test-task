@@ -1,47 +1,39 @@
 package ru.infomaximum.object;
 
-import com.opencsv.bean.CsvBindByName;
-
 import java.util.Objects;
 
 public class FileObject {
+    public static final String GROUP_AND_TYPE_DELIMITER = "~";
 
-    @CsvBindByName
-    private String group;
+    private String groupAndType;
 
-    @CsvBindByName
-    private String type;
-
-    @CsvBindByName
     private long number;
 
-    @CsvBindByName
     private long weight;
 
     public FileObject() {
     }
 
-    public FileObject(String group, String type, long number, long weight) {
-        this.group = group;
-        this.type = type;
+    public FileObject(String groupAndType, long number, long weight) {
+        this.groupAndType = groupAndType;
         this.number = number;
         this.weight = weight;
     }
 
-    public String getGroup() {
-        return group;
+    public String getGroupAndType() {
+        return groupAndType;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setGroupAndType(String groupAndType) {
+        this.groupAndType = groupAndType;
+    }
+
+    public String getGroup() {
+        return groupAndType.split(GROUP_AND_TYPE_DELIMITER)[0];
     }
 
     public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+        return groupAndType.split(GROUP_AND_TYPE_DELIMITER)[1];
     }
 
     public long getNumber() {
@@ -65,19 +57,21 @@ public class FileObject {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FileObject that = (FileObject) o;
-        return number == that.number && weight == that.weight && group.equals(that.group) && type.equals(that.type);
+        return number == that.number && weight == that.weight && groupAndType.equals(that.groupAndType);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(group, type, number, weight);
+        return Objects.hash(groupAndType, number, weight);
     }
 
     @Override
     public String toString() {
+        String[] groupAndType = getGroupAndType().split(GROUP_AND_TYPE_DELIMITER);
+
         return "FileObject{" +
-                "group='" + group + '\'' +
-                ", type='" + type + '\'' +
+                "group='" + groupAndType[0] + '\'' +
+                ", type='" + groupAndType[1] + '\'' +
                 ", number=" + number +
                 ", weight=" + weight +
                 '}';

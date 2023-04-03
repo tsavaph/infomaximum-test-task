@@ -1,20 +1,32 @@
 package ru.infomaximum.parcer;
 
 import ru.infomaximum.object.FileObject;
+import ru.infomaximum.object.ParsingFileObject;
 
 import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public abstract class FileObjectStatistics {
     private static final String BORDER_LINE = "###################################################################";
 
-    private List<FileObject> objects;
+    private final List<FileObject> objects = new ArrayList<>();
 
-    protected void setObjects(List<FileObject> objects) {
-        this.objects = objects;
+    protected void setObjects(Stream<ParsingFileObject> parsingFileObjectStream) {
+
+        parsingFileObjectStream.forEach(
+                parsingFileObject -> {
+                    this.objects.add(
+                            new FileObject(
+                                    parsingFileObject.getGroup() + FileObject.GROUP_AND_TYPE_DELIMITER + parsingFileObject.getType(),
+                                    parsingFileObject.getNumber(),
+                                    parsingFileObject.getWeight()
+                            )
+                    );
+                }
+        );
     }
-
 
     private void printGroupAndTypeDuplicates() {
 
@@ -22,10 +34,10 @@ public abstract class FileObjectStatistics {
         System.out.println("I. DUPLICATED OBJECTS\n");
 
         objects.stream()
-                .collect(Collectors.groupingBy(x -> x.getGroup() + "~" + x.getType(), Collectors.toList()))
+                .collect(Collectors.groupingBy(FileObject::getGroupAndType))
                 .forEach((key, value) -> {
                     if (value.size() > 1) {
-                        String[] groupAndType = key.split("~");
+                        String[] groupAndType = key.split(FileObject.GROUP_AND_TYPE_DELIMITER);
                         int amount = value.size();
                         System.out.printf("Group - %s, type - %s. Amount - %s%n", groupAndType[0], groupAndType[1], amount);
 
@@ -35,6 +47,8 @@ public abstract class FileObjectStatistics {
                     }
                 });
     }
+
+
 
     private void printSumWeight() {
         System.out.println("II. THE TOTAL WEIGHT OF OBJECT IN EACH GROUP\n");
